@@ -166,11 +166,11 @@ a { color: inherit; }
 .plan dt { font: 600 13px/1 var(--head); letter-spacing: .16em; text-transform: uppercase; opacity: .7; margin-bottom: 5px; }
 .plan dd { margin: 0; font-size: 18px; }
 .plan-drawing {
-  margin: 0; background: var(--paper); padding: clamp(14px, 2vw, 24px);
+  margin: 0; background: #fff; padding: clamp(14px, 2.4vw, 32px);
   display: grid; place-items: center;
 }
-.plan-drawing img { max-height: 320px; width: auto; mix-blend-mode: multiply; filter: grayscale(.35); }
-.plan-house .plan-drawing img { max-height: 280px; }
+.plan-drawing img { max-height: 460px; width: auto; max-width: 100%; height: auto; }
+.plan-house .plan-drawing img { max-height: 380px; }
 .rooms-foot { margin: 40px 0 0; font: 600 16px/1 var(--head); letter-spacing: .16em; text-transform: uppercase; }
 .rooms-foot a { color: var(--butter); margin-left: 12px; text-underline-offset: 5px; }
 @media (min-width: 860px) {
@@ -281,3 +281,4 @@ section[id] { scroll-margin-top: 56px; }
 .rooms-note { margin: 36px 0 0; max-width: 640px; font-size: 16px; opacity: .8; }
 .rooms-foot { margin-top: 16px !important; }
 .rooms-foot a { margin-left: 0 !important; }
+.plan-drawing a { display: block; cursor: zoom-in; }
