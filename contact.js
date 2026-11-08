@@ -22,7 +22,7 @@ window.LUTTRELL_CONTACT_ENDPOINT = window.LUTTRELL_CONTACT_ENDPOINT || "https://
         var json = await res.json();
         if (!json.ok) throw new Error(json.error || "failed");
         form.dataset.state = "sent";
-        if (status) status.textContent = "Thank you — we'll be in touch within a day or two.";
+        if (status) status.textContent = "Thank you — we'll reply by email.";
         form.reset();
       } catch (err) {
         form.dataset.state = "error";
