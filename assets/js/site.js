@@ -148,6 +148,10 @@
     $all("[data-photo]").forEach(function (slot) {
       var id = slot.getAttribute("data-photo");
       var p = photoById(id);
+      if (!isAvailable(p) && CFG.SHOW_GALLERY_PLACEHOLDERS === false) {
+        slot.hidden = true;
+        return;
+      }
       var node = isAvailable(p)
         ? imageFor(p, {
             eager: slot.hasAttribute("data-eager"),

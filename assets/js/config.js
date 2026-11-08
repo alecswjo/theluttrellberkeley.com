@@ -17,9 +17,9 @@ window.LUTTRELL = {
     "mailto:leasing@theluttrellberkeley.com?subject=" +
     encodeURIComponent("Tour request — The Luttrell"),
 
-  // Show labeled placeholders on the gallery page for photos that haven't been added yet.
-  // Set to false before launch if some photos are still missing.
-  SHOW_GALLERY_PLACEHOLDERS: true,
+  // Show labeled placeholders for photos that haven't been added yet.
+  // When false, missing photos are hidden everywhere (gallery and page photo slots).
+  SHOW_GALLERY_PLACEHOLDERS: false,
 
   // Announcement bar at the top of every page. Set `enabled: false` to hide it.
   // Change `id` whenever the text changes so visitors who closed the old one see the new one.
