@@ -1,0 +1,9 @@
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-cache
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: same-origin
+
+/content.json
+  Cache-Control: no-cache
+  Access-Control-Allow-Origin: *

@@ -1,0 +1,52 @@
+/* Edit affordances inside the preview frame. Kept quiet so the page still looks like the page. */
+.ed [data-edit] { outline: 2px dashed transparent; outline-offset: 4px; border-radius: 2px; cursor: text; transition: outline-color .12s; }
+.ed [data-edit]:hover { outline-color: rgba(42, 110, 230, .55); }
+.ed [data-edit]:focus { outline: 2px solid #2a6ee6; background: rgba(42, 110, 230, .06); }
+.ed [data-edit]:empty::before { content: "Type here…"; opacity: .45; font-style: italic; }
+.ed small[data-edit]:empty::before { content: "+ note"; }
+.ed .plan-prices dd small[data-edit]:empty { display: inline-block; min-width: 3em; }
+
+.ed [data-media] { position: relative; cursor: pointer; }
+.ed [data-media]:hover { outline: 3px solid rgba(42, 110, 230, .55); outline-offset: 2px; }
+.ed .ed-selected { outline: 3px solid #2a6ee6 !important; outline-offset: 2px; }
+.ed-media-btn {
+  position: absolute; top: 12px; right: 12px; z-index: 5;
+  font: 600 14px/1 system-ui, -apple-system, sans-serif; letter-spacing: 0; text-transform: none;
+  padding: 10px 14px; border-radius: 8px; border: 0; background: #fff; color: #14213d;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .25); cursor: pointer; opacity: 0; transition: opacity .12s;
+}
+.ed [data-media]:hover > .ed-media-btn, .ed .hero-media > .ed-media-btn, .ed .ed-selected > .ed-media-btn { opacity: 1; }
+.ed .hero-media { z-index: 3; }
+.ed .hero-media > .ed-media-btn { top: auto; bottom: 90px; right: 24px; }
+.ed .hero-center { pointer-events: none; z-index: 4; }
+.ed .hero-center [data-edit] { pointer-events: auto; }
+
+.ed [data-item] { position: relative; }
+.ed-tools {
+  position: absolute; top: -14px; right: 0; z-index: 6; display: none; gap: 4px;
+  padding: 4px; border-radius: 9px; background: #fff; box-shadow: 0 2px 12px rgba(0, 0, 0, .22);
+}
+.ed .ed-hover > .ed-tools { display: flex; }
+.ed .snap > .ed-tools { top: 8px; right: auto; left: 8px; }
+.ed .plan-prices > div > .ed-tools { top: -30px; }
+.ed-tool {
+  font: 600 13px/1 system-ui, -apple-system, sans-serif; letter-spacing: 0; text-transform: none;
+  min-width: 34px; padding: 8px 10px; border: 0; border-radius: 6px; background: #f1f3f7; color: #14213d; cursor: pointer;
+}
+.ed-tool:hover { background: #e2e7f0; }
+.ed-tool.ed-danger { color: #b3261e; }
+.ed .plan.ed-hover, .ed .walks li.ed-hover, .ed .plan-prices > div.ed-hover { box-shadow: 0 0 0 2px rgba(42, 110, 230, .35); border-radius: 4px; }
+
+.ed-add, .ed-status-add {
+  display: inline-block; margin: 18px 0 0; padding: 12px 18px; border-radius: 8px; cursor: pointer;
+  font: 600 15px/1 system-ui, -apple-system, sans-serif; letter-spacing: 0; text-transform: none;
+  border: 2px dashed currentColor; background: transparent; color: inherit; opacity: .75;
+}
+.ed-add:hover, .ed-status-add:hover { opacity: 1; }
+.ed-status-add { margin: -4px 0 16px; padding: 8px 12px; font-size: 13px; }
+.ed .plan-status { cursor: pointer; }
+.ed .plan-status:hover { outline: 2px dashed rgba(255, 255, 255, .7); outline-offset: 3px; }
+.ed .photos > .ed-add { margin-top: 28px; }
+
+/* The fixed site header would cover item toolbars while editing. */
+.ed .site-header { position: absolute; }

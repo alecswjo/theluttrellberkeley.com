@@ -1,0 +1,151 @@
+{
+  "seo": {
+    "title": "The Luttrell · Furnished student rooms on Channing Way, Berkeley",
+    "description": "Furnished private and shared rooms at 2328 Channing Way, Berkeley. About five minutes on foot to campus. Now leasing Spring and Fall 2027."
+  },
+  "hero": {
+    "script": "Now leasing",
+    "caps": "Spring & Fall 2027",
+    "video": "assets/hero-loop.mp4",
+    "poster": "assets/hero-poster.webp",
+    "alt": "The Luttrell at 2328 Channing Way: the restored 1889 yellow Victorian house with the new five-story building behind it."
+  },
+  "intro": {
+    "kicker": "The Luttrell · Berkeley",
+    "headline": "Furnished rooms, five minutes from campus.",
+    "body": "The Luttrell is at 2328 Channing Way: private rooms and shared rooms, in thirteen apartments and one historic house. The front house was built in 1889 for Captain James F. and Cecilia M. Luttrell.",
+    "image": {
+      "src": "assets/postcard-house.webp",
+      "alt": "Illustration of the Luttrell House and the new building behind it, drawn from a photo of the real building.",
+      "width": 1100,
+      "height": 1473
+    },
+    "caption": "Channing Way, 1889 & now"
+  },
+  "rooms": {
+    "heading": "Floor plans",
+    "body": "Every room comes furnished. A private room has a full bed, desk, chair, two 2-drawer chests and a wardrobe. A shared room has two Twin XL beds, two desks and chairs, and two wardrobes.",
+    "plans": [
+      {
+        "num": "No. 1",
+        "name": "Layout 1",
+        "spec": "2 bedrooms · 1 bath · 3 residents · 471–478 sq ft",
+        "status": "",
+        "prices": [
+          { "label": "Shared bedroom", "price": "$1,250–$1,290", "unit": "per person" },
+          { "label": "Private bedroom", "price": "$1,850–$1,890", "unit": "per room" },
+          { "label": "Entire apartment", "price": "$4,350–$4,470", "unit": "" }
+        ],
+        "image": {
+          "src": "assets/floorplans/layout-1.webp",
+          "alt": "Furnished floor plan, Layout 1: kitchen with dining table, bathroom with tub, shared Bedroom 1 with two twin beds and desks, private Bedroom 2 with a full bed and desk.",
+          "width": 1143,
+          "height": 1800
+        }
+      },
+      {
+        "num": "No. 2",
+        "name": "Layout 2",
+        "spec": "2 bedrooms · 1 bath · 3 residents · 520 sq ft",
+        "status": "",
+        "prices": [
+          { "label": "Shared bedroom", "price": "$1,390", "unit": "per person" },
+          { "label": "Private bedroom", "price": "$1,990", "unit": "per room" },
+          { "label": "Entire apartment", "price": "$4,770", "unit": "" }
+        ],
+        "image": {
+          "src": "assets/floorplans/layout-2.webp",
+          "alt": "Furnished floor plan, Layout 2: kitchen with dining table, bathroom with tub, shared Bedroom 1 with two twin beds and desks, private Bedroom 2 with a full bed and desk.",
+          "width": 1800,
+          "height": 1564
+        }
+      },
+      {
+        "num": "No. 3",
+        "name": "Layout 3",
+        "spec": "3 bedrooms · 1 bath · 3 residents · 581 sq ft",
+        "status": "",
+        "prices": [
+          { "label": "Private bedroom", "price": "$2,090–$2,190", "unit": "per room" },
+          { "label": "Entire apartment", "price": "$6,370", "unit": "" }
+        ],
+        "image": {
+          "src": "assets/floorplans/layout-3.webp",
+          "alt": "Furnished floor plan, Layout 3: kitchen with dining table, bathroom with tub, study nook, and three private bedrooms, each with a full bed, desk and wardrobe.",
+          "width": 1800,
+          "height": 1251
+        }
+      },
+      {
+        "num": "No. 4",
+        "name": "Layout 4",
+        "spec": "4 bedrooms · 2 baths · 4 residents · 893 sq ft",
+        "status": "",
+        "prices": [
+          { "label": "Private bedroom", "price": "$2,190", "unit": "per room" },
+          { "label": "Entire apartment", "price": "$8,760", "unit": "" }
+        ],
+        "image": {
+          "src": "assets/floorplans/layout-4.webp",
+          "alt": "Furnished floor plan, Layout 4: kitchen and dining area, two bathrooms with tubs, and four private bedrooms, each with a full bed, desk and wardrobe.",
+          "width": 1800,
+          "height": 1703
+        }
+      },
+      {
+        "num": "The 1889 house",
+        "name": "The Luttrell House",
+        "spec": "4 bedrooms · 3 baths · 5 residents · 2 floors",
+        "status": "",
+        "wide": true,
+        "prices": [
+          { "label": "Shared bedroom", "price": "$1,490", "unit": "per person" },
+          { "label": "Private bedroom", "price": "$2,190–$2,290", "unit": "per room" },
+          { "label": "Entire house", "price": "$9,750", "unit": "" }
+        ],
+        "image": {
+          "src": "assets/floorplans/luttrell-house.webp",
+          "alt": "Furnished floor plans of the Luttrell House. First floor: entry, stairs, Bedroom 1, Bath 1, kitchen, living and dining. Second floor: shared Bedroom 2 with two twin beds, Bedrooms 3 and 4, Baths 2 and 3.",
+          "width": 1800,
+          "height": 936
+        }
+      }
+    ],
+    "note": "Fall 2027 monthly rates. Shared-bedroom pricing is per person in a two-person bedroom. Spring specials available.",
+    "link": "Ask about Spring 2027"
+  },
+  "photos": {
+    "heading": "The rooms",
+    "items": [
+      { "src": "assets/photo-bedroom-window.webp", "alt": "Private bedroom: full bed frame with storage drawers, desk and chair, and a large south-facing window.", "width": 900, "height": 1612, "caption": "Private bedroom" },
+      { "src": "assets/photo-bedroom-corner.webp", "alt": "Private bedroom with windows on two walls, a desk and chair, and a bed frame.", "width": 900, "height": 1612, "caption": "Corner bedroom" },
+      { "src": "assets/photo-kitchen.webp", "alt": "Apartment kitchen with white cabinets, stone counters, stainless range, dishwasher and refrigerator.", "width": 900, "height": 1205, "caption": "Kitchen" },
+      { "src": "assets/photo-bath.webp", "alt": "Bathroom with a dark vanity, mirror, toilet and a tub with marble-look surround.", "width": 900, "height": 1205, "caption": "Bath" },
+      { "src": "assets/photo-laundry.webp", "alt": "On-site laundry room with a row of stacked washers and dryers.", "width": 900, "height": 1205, "caption": "Laundry, on site" },
+      { "src": "assets/photo-house-northeast.webp", "alt": "The 1889 Luttrell House from the northeast, with its turret and arched porch.", "width": 900, "height": 1205, "caption": "The 1889 house" }
+    ]
+  },
+  "location": {
+    "heading": "2328\nChanning Way",
+    "lead": "Berkeley, CA 94704. On foot from the front gate:",
+    "walks": [
+      { "place": "Telegraph Ave", "time": "5 min" },
+      { "place": "Sproul Plaza", "time": "8 min" },
+      { "place": "Downtown Berkeley BART", "time": "14 min" }
+    ],
+    "image": {
+      "src": "assets/engraving-house.webp",
+      "alt": "Pen-and-ink drawing of the Luttrell House on Channing Way, drawn from a photo of the real building.",
+      "width": 760,
+      "height": 1018
+    }
+  },
+  "inquire": {
+    "heading": "Inquire",
+    "body": "Tell us which term you're after. We reply by email."
+  },
+  "footer": {
+    "address": "2328 Channing Way\nBerkeley, CA 94704",
+    "email": "leasing@theluttrellberkeley.com"
+  }
+}

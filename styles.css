@@ -162,6 +162,14 @@ a { color: inherit; }
 .plan-num { font: 600 14px/1 var(--head); letter-spacing: .18em; text-transform: uppercase; color: var(--butter); margin: 0 0 8px; }
 .plan-num .script { font-size: 26px; letter-spacing: 0; text-transform: none; }
 .plan h3 { font: 700 clamp(32px, 4vw, 44px)/1 var(--head); text-transform: uppercase; margin: 0 0 18px; letter-spacing: .01em; }
+/* Availability stamp, set per floor plan in the editor. */
+.plan-status {
+  display: inline-block; margin: -6px 0 18px; padding: 7px 12px 6px;
+  font: 700 14px/1 var(--head); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--butter); border: 2px solid currentColor; border-radius: 3px; transform: rotate(-2deg);
+}
+.plan-status.is-open { background: var(--butter); border-color: var(--butter); color: var(--ink); }
+.plan-status.is-muted { color: rgba(246, 243, 236, .6); }
 .plan dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; max-width: 420px; }
 .plan dt { font: 600 13px/1 var(--head); letter-spacing: .16em; text-transform: uppercase; opacity: .7; margin-bottom: 5px; }
 .plan dd { margin: 0; font-size: 18px; }
