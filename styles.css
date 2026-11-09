@@ -142,7 +142,7 @@ a { color: inherit; }
 .snap img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .tour { position: relative; cursor: pointer; }
 .tour-feature { display: grid; justify-items: center; margin: 8px 0 clamp(48px, 7vw, 88px); }
-.snap-tour { width: min(100%, 340px); }
+.snap-tour { width: min(80%, 340px); }
 .tour video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; background: var(--sand); }
 .tour-play {
   position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px;
