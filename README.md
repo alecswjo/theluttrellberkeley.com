@@ -15,7 +15,7 @@ One-page site for The Luttrell, 2328 Channing Way, Berkeley. The public site is 
 `https://admin.theluttrellberkeley.com` — a password-protected, click-to-edit copy of the page, hosted on Cloudflare Pages from this same repo.
 
 - `admin/` — the editor (plain JS modules, no build step). `admin/vendor/` holds Mediabunny (video conversion) and heic2any (iPhone photos).
-- `functions/api/[[route]].js` + `server/` — the editor's API (Cloudflare Pages Functions): sign-in, read content, publish, history, inquiries.
+- `functions/api/[[route]].js` + `server/` — the editor's API (Cloudflare Pages Functions): sign-in, read content, publish, history.
 - Publishing makes one commit to `main` (content.json + index.html + new uploads), credited to whoever is editing. GitHub Pages and Cloudflare both redeploy from it. Every published version is in the editor's History tab and can be restored.
 - The "website updated" email goes through the inquiry Apps Script (`admin-notify` action, guarded by its `ADMIN_KEY` script property; run `createEditorKey` in the Apps Script editor to print it). The Inquiries tab was removed on 2026-11-09; its `admin-list`/`admin-status` actions remain in the Apps Script, unused.
 
