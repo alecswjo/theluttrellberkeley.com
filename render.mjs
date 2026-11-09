@@ -41,6 +41,10 @@ export function renderPage(c, opts = {}) {
   const add = (list, label) => (edit ? `<button type="button" class="ed-add" data-add="${list}">+ ${esc(label)}</button>` : "");
   const focus = (img) => (img.focus && img.focus !== "50% 50%" ? ` style="object-position:${esc(img.focus)}"` : "");
   const email = c.footer.email;
+  // Fields added after launch are optional so older versions in History still render and restore.
+  const phone = c.footer.phone || "";
+  const tel = phone.replace(/[^\d+]/g, "").replace(/^(\d{10})$/, "+1$1");
+  const history = c.history || { heading: "", body: "" };
 
   const plans = c.rooms.plans
     .map((p, i) => {
@@ -61,7 +65,7 @@ export function renderPage(c, opts = {}) {
       const img = p.image;
       return `        <li class="plan${p.wide ? " plan-house" : ""} reveal"${item("rooms.plans", i)}>
           <div class="plan-info">
-            <p class="plan-num"${t(`${base}.num`)}>${esc(p.num)}</p>
+            ${p.num || edit ? `<p class="plan-num"${t(`${base}.num`)}>${esc(p.num)}</p>` : ""}
             <h3${t(`${base}.name`)}>${esc(p.name)}</h3>
             ${status}
             <p class="plan-spec"${t(`${base}.spec`)}>${esc(p.spec)}</p>
@@ -142,6 +146,7 @@ ${opts.head || ""}<title>${esc(c.seo.title)}</title>
       <div class="intro-copy">
         <p class="kicker reveal"${t("intro.kicker")}>${esc(c.intro.kicker)}</p>
         <h2 id="intro-title" class="display reveal"${t("intro.headline", true)}>${lines(c.intro.headline)}</h2>
+        ${c.intro.subhead || edit ? `<p class="intro-sub reveal"${t("intro.subhead")}>${esc(c.intro.subhead)}</p>` : ""}
         <div class="reveal"${t("intro.body", true)}>
           ${paragraphs(c.intro.body, "")}
         </div>
@@ -165,6 +170,7 @@ ${opts.head || ""}<title>${esc(c.seo.title)}</title>
 ${plans}
       </ol>
       ${add("rooms.plans", "Add floor plan")}
+      ${c.rooms.disclaimer || edit ? `<p class="rooms-fine reveal"${t("rooms.disclaimer", true)}>${lines(c.rooms.disclaimer)}</p>` : ""}
       <p class="rooms-note reveal"${t("rooms.note", true)}>${lines(c.rooms.note)}</p>
       <p class="rooms-foot reveal"><a href="#inquire"${t("rooms.link")}>${esc(c.rooms.link)}</a></p>
     </div>
@@ -253,8 +259,13 @@ ${photos}
     <div>
       <p class="foot-name">The Luttrell</p>
       <p${t("footer.address", true)}>${lines(c.footer.address)}</p>
+      ${phone || edit ? `<p><a href="tel:${esc(tel)}"${t("footer.phone")}>${esc(phone)}</a></p>` : ""}
       <p><a href="mailto:${esc(email)}"${t("footer.email")}>${esc(email)}</a></p>
     </div>
+    ${history.heading || history.body || edit ? `<div class="foot-history">
+      <p class="foot-name"${t("history.heading")}>${esc(history.heading)}</p>
+      <p${t("history.body", true)}>${lines(history.body)}</p>
+    </div>` : ""}
   </div>
 </footer>
 

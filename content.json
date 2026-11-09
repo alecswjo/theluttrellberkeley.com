@@ -12,15 +12,16 @@
   },
   "intro": {
     "kicker": "The Luttrell · Berkeley",
-    "headline": "Furnished rooms, five minutes from campus.",
-    "body": "The Luttrell is at 2328 Channing Way: private rooms and shared rooms, in thirteen apartments and one historic house. The front house was built in 1889 for Captain James F. and Cecilia M. Luttrell.",
+    "headline": "Modern Living. Historic Charm.",
+    "body": "Brand-new apartments paired with the timeless character of a historic Victorian home. A distinctive off-campus living experience designed for UC Berkeley students.",
     "image": {
       "src": "assets/postcard-house.webp",
       "alt": "Illustration of the Luttrell House and the new building behind it, drawn from a photo of the real building.",
       "width": 1100,
       "height": 1473
     },
-    "caption": "Channing Way, 1889 & now"
+    "caption": "Channing Way, 1889 & now",
+    "subhead": "A New Standard in Berkeley Student Living."
   },
   "rooms": {
     "heading": "Floor plans",
@@ -28,7 +29,7 @@
     "plans": [
       {
         "num": "No. 1",
-        "name": "Layout 1",
+        "name": "Type 1",
         "spec": "2 bedrooms · 1 bath · 3 residents · 471–478 sq ft",
         "status": "",
         "prices": [
@@ -50,14 +51,14 @@
         ],
         "image": {
           "src": "assets/floorplans/layout-1.webp",
-          "alt": "Furnished floor plan, Layout 1: kitchen with dining table, bathroom with tub, shared Bedroom 1 with two twin beds and desks, private Bedroom 2 with a full bed and desk.",
+          "alt": "Furnished floor plan, Type 1: kitchen with dining table, bathroom with tub, shared Bedroom 1 with two twin beds and desks, private Bedroom 2 with a full bed and desk.",
           "width": 1143,
           "height": 1800
         }
       },
       {
         "num": "No. 2",
-        "name": "Layout 2",
+        "name": "Type 2 – Shared",
         "spec": "2 bedrooms · 1 bath · 3 residents · 520 sq ft",
         "status": "",
         "prices": [
@@ -79,14 +80,14 @@
         ],
         "image": {
           "src": "assets/floorplans/layout-2.webp",
-          "alt": "Furnished floor plan, Layout 2: kitchen with dining table, bathroom with tub, shared Bedroom 1 with two twin beds and desks, private Bedroom 2 with a full bed and desk.",
+          "alt": "Furnished floor plan, Type 2 – Shared: kitchen with dining table, bathroom with tub, shared Bedroom 1 with two twin beds and desks, private Bedroom 2 with a full bed and desk.",
           "width": 1800,
           "height": 1564
         }
       },
       {
         "num": "No. 3",
-        "name": "Layout 3",
+        "name": "Type 2 – Private",
         "spec": "3 bedrooms · 1 bath · 3 residents · 581 sq ft",
         "status": "",
         "prices": [
@@ -103,14 +104,14 @@
         ],
         "image": {
           "src": "assets/floorplans/layout-3.webp",
-          "alt": "Furnished floor plan, Layout 3: kitchen with dining table, bathroom with tub, study nook, and three private bedrooms, each with a full bed, desk and wardrobe.",
+          "alt": "Furnished floor plan, Type 2 – Private: kitchen with dining table, bathroom with tub, study nook, and three private bedrooms, each with a full bed, desk and wardrobe.",
           "width": 1800,
           "height": 1251
         }
       },
       {
         "num": "No. 4",
-        "name": "Layout 4",
+        "name": "Type 3",
         "spec": "4 bedrooms · 2 baths · 4 residents · 893 sq ft",
         "status": "",
         "prices": [
@@ -127,13 +128,13 @@
         ],
         "image": {
           "src": "assets/floorplans/layout-4.webp",
-          "alt": "Furnished floor plan, Layout 4: kitchen and dining area, two bathrooms with tubs, and four private bedrooms, each with a full bed, desk and wardrobe.",
+          "alt": "Furnished floor plan, Type 3: kitchen and dining area, two bathrooms with tubs, and four private bedrooms, each with a full bed, desk and wardrobe.",
           "width": 1800,
           "height": 1703
         }
       },
       {
-        "num": "The 1889 house",
+        "num": "",
         "name": "The Luttrell House",
         "spec": "4 bedrooms · 3 baths · 5 residents · 2 floors",
         "status": "",
@@ -164,10 +165,11 @@
       }
     ],
     "note": "Fall 2027 monthly rates. Shared-bedroom pricing is per person in a two-person bedroom. Spring specials available.",
-    "link": "Ask about Spring 2027"
+    "link": "Ask about Spring 2027",
+    "disclaimer": "Floor plans are artist's renderings and all dimensions are approximate. Actual products, features, and specifications may vary in size or detail. Not all features are available in every rental home. Prices and availability are subject to change without notice."
   },
   "photos": {
-    "heading": "The rooms",
+    "heading": "Gallery",
     "items": [
       {
         "src": "assets/photo-bedroom-window.webp",
@@ -243,7 +245,12 @@
   },
   "footer": {
     "address": "2328 Channing Way\nBerkeley, CA 94704",
-    "email": "leasing@theluttrellberkeley.com"
+    "email": "leasing@theluttrellberkeley.com",
+    "phone": "(510) 717-0047"
   },
-  "publishedAt": "2026-11-09T03:52:12.182Z"
+  "publishedAt": "2026-11-09T03:52:12.182Z",
+  "history": {
+    "heading": "The Luttrell House",
+    "body": "The front house was built in 1889 for Captain James F. and Cecilia M. Luttrell. It is a City of Berkeley historic resource, restored and now paired with the new building behind it."
+  }
 }

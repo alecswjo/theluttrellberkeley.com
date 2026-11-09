@@ -9,12 +9,14 @@ const FIELD = {
   "hero.alt": "Top video description",
   "intro.kicker": "Intro, small line",
   "intro.headline": "Intro headline",
+  "intro.subhead": "Intro subheading",
   "intro.body": "Intro text",
   "intro.image": "Intro picture",
   "intro.caption": "Intro picture caption",
   "rooms.heading": "Floor plans heading",
   "rooms.body": "Floor plans text",
-  "rooms.note": "Floor plans small print",
+  "rooms.disclaimer": "Floor plans disclaimer",
+  "rooms.note": "Floor plans rates note",
   "rooms.link": "Floor plans link",
   "photos.heading": "Photos heading",
   "location.heading": "Address heading",
@@ -23,7 +25,10 @@ const FIELD = {
   "inquire.heading": "Inquiry heading",
   "inquire.body": "Inquiry text",
   "footer.address": "Footer address",
+  "footer.phone": "Phone number",
   "footer.email": "Contact email",
+  "history.heading": "History heading",
+  "history.body": "History text",
 };
 
 const PLAN_FIELD = { num: "small label", name: "name", spec: "details", status: "availability label", image: "drawing" };
@@ -140,7 +145,7 @@ export function describeChanges(before, after) {
   return out;
 }
 
-const SECTIONS = ["seo", "hero", "intro", "rooms", "photos", "location", "inquire", "footer"];
+const SECTIONS = ["seo", "hero", "intro", "rooms", "photos", "location", "inquire", "footer", "history"];
 
 // Someone else published since this draft started: keep their version of every section this
 // draft didn't touch, and this draft's version of every section it did.

@@ -44,12 +44,25 @@ function reset() {
   trees.clear();
   commits.clear();
   notifications.length = 0;
-  const seed = new Map([["content.json", putBlob(readFileSync(new URL("content.json", root)))]]);
-  head = putCommit({
-    tree: putTree(seed),
+  // History starts with a version saved before the phone, subheading, disclaimer and history fields existed.
+  const current = JSON.parse(readFileSync(new URL("content.json", root)));
+  const legacy = structuredClone(current);
+  legacy.intro.headline = "Furnished rooms, five minutes from campus.";
+  delete legacy.intro.subhead;
+  delete legacy.rooms.disclaimer;
+  delete legacy.footer.phone;
+  delete legacy.history;
+  const first = putCommit({
+    tree: putTree(new Map([["content.json", putBlob(Buffer.from(JSON.stringify(legacy, null, 2)))]])),
     parent: null,
     message: "Website update by Alec: 1 change\n\n- Initial content",
-    author: { name: "Alec", email: "x@example.com", date: new Date(Date.now() - 864e5).toISOString() },
+    author: { name: "Alec", email: "x@example.com", date: new Date(Date.now() - 2 * 864e5).toISOString() },
+  });
+  head = putCommit({
+    tree: putTree(new Map([["content.json", putBlob(Buffer.from(JSON.stringify(current, null, 2)))]])),
+    parent: first,
+    message: "Website update by Mom: 5 changes\n\n- New intro wording",
+    author: { name: "Mom", email: "x@example.com", date: new Date(Date.now() - 864e5).toISOString() },
   });
   live = { head, at: 0 };
   inquiries.forEach((r) => (r.status = r.row === 3 ? "Replied" : ""));

@@ -18,6 +18,7 @@ await fetch(`${FAKE}/test/reset`, { method: "POST" });
 
 const browser = await chromium.launch({ channel: "chrome" });
 const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+await context.grantPermissions(["clipboard-read", "clipboard-write"], { origin: BASE });
 const page = await context.newPage();
 const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
@@ -91,6 +92,58 @@ await frame().locator('[data-item="rooms.plans.0.prices"][data-index="3"] .ed-to
 await page.waitForTimeout(150);
 check((await frame().locator('[data-item="rooms.plans.0.prices"]').count()) === 3, "removed the price row");
 check(await page.isVisible("#toast >> text=Undo"), "removing offers Undo");
+
+// --- new fields: subheading, disclaimer, phone, history (two paragraphs) ---
+const typeInto = async (path, text) => {
+  const el = frame().locator(`[data-edit="${path}"]`);
+  await el.evaluate((e) => e.scrollIntoView({ block: "center" }));
+  await el.click();
+  await page.keyboard.press("Meta+A");
+  await page.keyboard.type(text);
+};
+await typeInto("intro.subhead", "A new standard for Berkeley students.");
+await typeInto("rooms.disclaimer", "Floor plans are approximate.");
+await typeInto("footer.phone", "(510) 555-0199");
+await typeInto("history.body", "Built in 1889.");
+await page.keyboard.press("Enter");
+await page.keyboard.press("Enter");
+await page.keyboard.type("Restored in 2025.");
+await page.waitForTimeout(200);
+check((await frame().locator('[data-edit="footer.phone"]').textContent()) === "(510) 555-0199", "phone number is editable in place");
+
+// Pasting formatted text keeps only the words.
+await frame().locator('[data-edit="intro.kicker"]').evaluate((e) => e.scrollIntoView({ block: "center" }));
+await frame().locator('[data-edit="intro.kicker"]').click();
+await page.keyboard.press("Meta+A");
+await page.evaluate(async () => {
+  const html = new Blob(["<b style='color:red'>The Luttrell</b> <i>Berkeley</i>"], { type: "text/html" });
+  const text = new Blob(["The Luttrell Berkeley"], { type: "text/plain" });
+  await navigator.clipboard.write([new ClipboardItem({ "text/html": html, "text/plain": text })]);
+});
+await page.keyboard.press("Meta+V");
+await page.waitForTimeout(200);
+check((await frame().locator('[data-edit="intro.kicker"]').innerHTML()).indexOf("<") === -1, "pasted formatting is stripped to plain text");
+
+// The house has no small label: hidden on the site, still editable here.
+check((await frame().locator('[data-edit="rooms.plans.4.num"]').count()) === 1, "empty plan label is still editable in the editor");
+
+// Floor plans: add, rename, move up, remove.
+const planCount = await frame().locator('[data-item="rooms.plans"]').count();
+await frame().locator('[data-add="rooms.plans"]').evaluate((e) => e.scrollIntoView({ block: "center" }));
+await frame().locator('[data-add="rooms.plans"]').click();
+await page.waitForTimeout(300);
+await page.keyboard.type("Type 4");
+await page.waitForTimeout(200);
+check((await frame().locator('[data-item="rooms.plans"]').count()) === planCount + 1, "added a floor plan");
+check((await frame().locator(`[data-edit="rooms.plans.${planCount}.name"]`).textContent()) === "Type 4", "new floor plan name typed in place");
+await hover(`[data-item="rooms.plans"][data-index="${planCount}"]`);
+await frame().locator(`[data-item="rooms.plans"][data-index="${planCount}"] > .ed-tools button[title^="Move this floor plan up"]`).click();
+await page.waitForTimeout(200);
+check((await frame().locator(`[data-edit="rooms.plans.${planCount - 1}.name"]`).textContent()) === "Type 4", "moved the new floor plan up");
+await hover(`[data-item="rooms.plans"][data-index="${planCount - 1}"]`);
+await frame().locator(`[data-item="rooms.plans"][data-index="${planCount - 1}"] > .ed-tools button.ed-danger`).click();
+await page.waitForTimeout(200);
+check((await frame().locator('[data-item="rooms.plans"]').count()) === planCount, "removed the new floor plan");
 
 // --- availability label ---
 await frame().locator('[data-status-for="rooms.plans.2"]').click();
@@ -184,6 +237,10 @@ check(c.intro.headline === "Furnished rooms, a short walk from campus." && c.roo
 check(c.photos.items[2].src.startsWith("assets/uploads/") && s.commits[0].files.includes(c.photos.items[2].src), "uploaded photo is in the commit");
 check(c.hero.video.startsWith("assets/uploads/") && c.hero.poster.startsWith("assets/uploads/"), "new video and poster are in the commit");
 check(s.indexHtml.includes("a short walk from campus") && !s.indexHtml.includes("data-edit"), "index.html is rendered without editor markup");
+check(c.footer.phone === "(510) 555-0199" && s.indexHtml.includes('href="tel:+15105550199"'), "phone is published with a working call link");
+check(c.history.body === "Built in 1889.\n\nRestored in 2025.", "two-paragraph text keeps its blank line");
+check(c.intro.kicker === "The Luttrell Berkeley", "pasted text was saved as plain words");
+check(!s.indexHtml.includes('class="plan-num"></p>'), "empty plan label isn't printed on the site");
 check(s.notifications.length === 1 && s.notifications[0].subject === "Website updated by Mom", "leasing@ gets a publish email");
 const video = await fetch(`${FAKE}/test/file?path=${c.hero.video}`).then((r) => r.arrayBuffer());
 check(video.byteLength > 1000 && video.byteLength < 8e6, `video file is web-sized (${Math.round(video.byteLength / 1024)} KB)`);
@@ -222,6 +279,7 @@ await page.locator(".version").last().locator("text=Restore…").click();
 await page.getByRole("button", { name: "Restore", exact: true }).click();
 await page.waitForTimeout(300);
 check((await frame().locator("#intro-title").textContent()).includes("five minutes"), "restoring loads the original version into the editor");
+check((await frame().locator('[data-edit="footer.phone"]').textContent()) === "(510) 555-0199", "restoring an older version keeps fields it didn't have yet");
 check(/Publish \d+ change/.test(await page.textContent("#publish")), "restored version waits for Publish");
 await page.click("#discard");
 await page.getByRole("button", { name: "Discard changes", exact: true }).last().click();
@@ -241,6 +299,27 @@ await page.waitForTimeout(300);
 s = await state();
 check(s.inquiries.find((r) => r.name === "Jamie Park").status === "Replied", "ticking Replied saves to the sheet");
 check(await page.isHidden("#inquiry-badge"), "badge clears when everything is replied");
+
+// --- keyboard undo inside the page, editing at phone width, switching person ---
+await page.click('[data-tab="edit"]');
+await page.click('[data-device="phone"]');
+await page.waitForTimeout(300);
+const caps = frame().locator('[data-edit="hero.caps"]');
+await caps.click();
+await page.keyboard.press("Meta+A");
+await page.keyboard.type("Fall 2027 only");
+await page.waitForTimeout(200);
+check((await page.textContent("#publish")).includes("1 change"), "editing works in the phone preview");
+await frame().locator('[data-edit="hero.caps"]').click();
+await page.keyboard.press("Meta+Z");
+await page.waitForTimeout(300);
+check((await frame().locator('[data-edit="hero.caps"]').textContent()) === "Spring & Fall 2027", "Cmd+Z while typing on the page undoes the edit");
+await page.click('[data-device="desktop"]');
+await page.click("#who-menu");
+await page.click("#switch-person");
+await page.click("text=Dad");
+await page.waitForTimeout(300);
+check((await page.textContent("#who-name")) === "Dad", "Switch person changes who is editing");
 
 // --- sign out ---
 await page.click("#who-menu");

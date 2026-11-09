@@ -785,8 +785,16 @@ async function restoreVersion(v) {
   });
   if (!ok) return;
   const { content } = await api("GET", `/version?sha=${v.sha}`);
+  // Versions saved before a field existed get today's value for it, so nothing new disappears.
+  const fill = (target, from) => {
+    for (const [k, v] of Object.entries(from)) {
+      if (target[k] === undefined) target[k] = clone(v);
+      else if (v && typeof v === "object" && !Array.isArray(v) && typeof target[k] === "object") fill(target[k], v);
+    }
+    return target;
+  };
   change(() => {
-    state.draft = clone(content);
+    state.draft = fill(clone(content), state.base);
     state.draft.publishedAt = state.base.publishedAt;
     if (!state.draft.publishedAt) delete state.draft.publishedAt;
   });

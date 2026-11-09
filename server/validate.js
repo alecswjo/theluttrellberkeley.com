@@ -6,7 +6,7 @@ const IMAGE = { src: "src", alt: "str", width: "int", height: "int", focus: "foc
 const SHAPE = {
   seo: { title: "str", description: "str" },
   hero: { script: "str", caps: "str", video: "src", poster: "src", alt: "str" },
-  intro: { kicker: "str", headline: "str", body: "str", image: IMAGE, caption: "str" },
+  intro: { kicker: "str", headline: "str", subhead: "str?", body: "str", image: IMAGE, caption: "str" },
   rooms: {
     heading: "str",
     body: "str",
@@ -21,13 +21,16 @@ const SHAPE = {
         image: IMAGE,
       },
     ],
+    disclaimer: "str?",
     note: "str",
     link: "str",
   },
   photos: { heading: "str", items: [{ ...IMAGE, caption: "str" }] },
   location: { heading: "str", lead: "str", walks: [{ place: "str", time: "str" }], image: IMAGE },
   inquire: { heading: "str", body: "str" },
-  footer: { address: "str", email: "email" },
+  footer: { address: "str", phone: "str?", email: "email" },
+  // Sections added after launch are optional so versions saved before them can be restored.
+  "history?": { heading: "str", body: "str" },
   publishedAt: "str?",
 };
 
@@ -45,13 +48,14 @@ function check(value, shape, path) {
   if (typeof shape === "object") {
     if (!value || typeof value !== "object" || Array.isArray(value)) throw new InvalidContent(`${path} is missing`);
     const out = {};
-    for (const [k, s] of Object.entries(shape)) {
-      const optional = typeof s === "string" && s.endsWith("?");
+    for (const [rawKey, s] of Object.entries(shape)) {
+      const k = rawKey.replace(/\?$/, "");
+      const optional = rawKey.endsWith("?") || (typeof s === "string" && s.endsWith("?"));
       if (value[k] === undefined || value[k] === null) {
         if (optional) continue;
         throw new InvalidContent(`${path ? `${path}.` : ""}${k} is missing`);
       }
-      out[k] = check(value[k], optional ? s.slice(0, -1) : s, path ? `${path}.${k}` : k);
+      out[k] = check(value[k], typeof s === "string" && s.endsWith("?") ? s.slice(0, -1) : s, path ? `${path}.${k}` : k);
     }
     return out;
   }
