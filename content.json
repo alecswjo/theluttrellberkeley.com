@@ -179,7 +179,7 @@
         "caption": "The Luttrell House"
       },
       {
-        "src": "assets/uploads/9bc085f81aaa34e1.jpg",
+        "src": "assets/uploads/23492448e623833f.jpg",
         "alt": "",
         "width": 1536,
         "height": 1024,
@@ -190,7 +190,21 @@
         "alt": "",
         "width": 1536,
         "height": 1024,
-        "caption": "New photo"
+        "caption": "Private room"
+      },
+      {
+        "src": "assets/uploads/5d9468ef6722163e.jpg",
+        "alt": "",
+        "width": 1086,
+        "height": 1448,
+        "caption": "Kitchen"
+      },
+      {
+        "src": "assets/uploads/0b49c8d3507e18dd.jpg",
+        "alt": "",
+        "width": 1086,
+        "height": 1448,
+        "caption": "BATHROOM"
       }
     ],
     "tour": {
@@ -237,5 +251,5 @@
     "heading": "The Luttrell House",
     "body": "The front house was built in 1889 for Captain James F. and Cecilia M. Luttrell. It is a City of Berkeley historic resource, restored and now paired with the new building behind it."
   },
-  "publishedAt": "2026-11-09T09:01:54.619Z"
+  "publishedAt": "2026-11-09T09:16:34.127Z"
 }
