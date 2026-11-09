@@ -32,9 +32,21 @@
         "spec": "2 bedrooms · 1 bath · 3 residents · 471–478 sq ft",
         "status": "",
         "prices": [
-          { "label": "Shared bedroom", "price": "$1,250–$1,290", "unit": "per person" },
-          { "label": "Private bedroom", "price": "$1,850–$1,890", "unit": "per room" },
-          { "label": "Entire apartment", "price": "$4,350–$4,470", "unit": "" }
+          {
+            "label": "Shared bedroom",
+            "price": "$1,250–$1,290",
+            "unit": "per person"
+          },
+          {
+            "label": "Private bedroom",
+            "price": "$1,850–$1,890",
+            "unit": "per room"
+          },
+          {
+            "label": "Entire apartment",
+            "price": "$4,350–$4,470",
+            "unit": ""
+          }
         ],
         "image": {
           "src": "assets/floorplans/layout-1.webp",
@@ -49,9 +61,21 @@
         "spec": "2 bedrooms · 1 bath · 3 residents · 520 sq ft",
         "status": "",
         "prices": [
-          { "label": "Shared bedroom", "price": "$1,390", "unit": "per person" },
-          { "label": "Private bedroom", "price": "$1,990", "unit": "per room" },
-          { "label": "Entire apartment", "price": "$4,770", "unit": "" }
+          {
+            "label": "Shared bedroom",
+            "price": "$1,390",
+            "unit": "per person"
+          },
+          {
+            "label": "Private bedroom",
+            "price": "$1,990",
+            "unit": "per room"
+          },
+          {
+            "label": "Entire apartment",
+            "price": "$4,770",
+            "unit": ""
+          }
         ],
         "image": {
           "src": "assets/floorplans/layout-2.webp",
@@ -66,8 +90,16 @@
         "spec": "3 bedrooms · 1 bath · 3 residents · 581 sq ft",
         "status": "",
         "prices": [
-          { "label": "Private bedroom", "price": "$2,090–$2,190", "unit": "per room" },
-          { "label": "Entire apartment", "price": "$6,370", "unit": "" }
+          {
+            "label": "Private bedroom",
+            "price": "$2,090–$2,190",
+            "unit": "per room"
+          },
+          {
+            "label": "Entire apartment",
+            "price": "$6,370",
+            "unit": ""
+          }
         ],
         "image": {
           "src": "assets/floorplans/layout-3.webp",
@@ -82,8 +114,16 @@
         "spec": "4 bedrooms · 2 baths · 4 residents · 893 sq ft",
         "status": "",
         "prices": [
-          { "label": "Private bedroom", "price": "$2,190", "unit": "per room" },
-          { "label": "Entire apartment", "price": "$8,760", "unit": "" }
+          {
+            "label": "Private bedroom",
+            "price": "$2,190",
+            "unit": "per room"
+          },
+          {
+            "label": "Entire apartment",
+            "price": "$8,760",
+            "unit": ""
+          }
         ],
         "image": {
           "src": "assets/floorplans/layout-4.webp",
@@ -99,9 +139,21 @@
         "status": "",
         "wide": true,
         "prices": [
-          { "label": "Shared bedroom", "price": "$1,490", "unit": "per person" },
-          { "label": "Private bedroom", "price": "$2,190–$2,290", "unit": "per room" },
-          { "label": "Entire house", "price": "$9,750", "unit": "" }
+          {
+            "label": "Shared bedroom",
+            "price": "$1,490",
+            "unit": "per person"
+          },
+          {
+            "label": "Private bedroom",
+            "price": "$2,190–$2,290",
+            "unit": "per room"
+          },
+          {
+            "label": "Entire house",
+            "price": "$9,750",
+            "unit": ""
+          }
         ],
         "image": {
           "src": "assets/floorplans/luttrell-house.webp",
@@ -112,26 +164,71 @@
       }
     ],
     "note": "Fall 2027 monthly rates. Shared-bedroom pricing is per person in a two-person bedroom. Spring specials available.",
-    "link": "Ask about Spring 2027"
+    "link": "Ask about Spring 2027 (test)"
   },
   "photos": {
     "heading": "The rooms",
     "items": [
-      { "src": "assets/photo-bedroom-window.webp", "alt": "Private bedroom: full bed frame with storage drawers, desk and chair, and a large south-facing window.", "width": 900, "height": 1612, "caption": "Private bedroom" },
-      { "src": "assets/photo-bedroom-corner.webp", "alt": "Private bedroom with windows on two walls, a desk and chair, and a bed frame.", "width": 900, "height": 1612, "caption": "Corner bedroom" },
-      { "src": "assets/photo-kitchen.webp", "alt": "Apartment kitchen with white cabinets, stone counters, stainless range, dishwasher and refrigerator.", "width": 900, "height": 1205, "caption": "Kitchen" },
-      { "src": "assets/photo-bath.webp", "alt": "Bathroom with a dark vanity, mirror, toilet and a tub with marble-look surround.", "width": 900, "height": 1205, "caption": "Bath" },
-      { "src": "assets/photo-laundry.webp", "alt": "On-site laundry room with a row of stacked washers and dryers.", "width": 900, "height": 1205, "caption": "Laundry, on site" },
-      { "src": "assets/photo-house-northeast.webp", "alt": "The 1889 Luttrell House from the northeast, with its turret and arched porch.", "width": 900, "height": 1205, "caption": "The 1889 house" }
+      {
+        "src": "assets/photo-bedroom-window.webp",
+        "alt": "Private bedroom: full bed frame with storage drawers, desk and chair, and a large south-facing window.",
+        "width": 900,
+        "height": 1612,
+        "caption": "Private bedroom"
+      },
+      {
+        "src": "assets/photo-bedroom-corner.webp",
+        "alt": "Private bedroom with windows on two walls, a desk and chair, and a bed frame.",
+        "width": 900,
+        "height": 1612,
+        "caption": "Corner bedroom"
+      },
+      {
+        "src": "assets/photo-kitchen.webp",
+        "alt": "Apartment kitchen with white cabinets, stone counters, stainless range, dishwasher and refrigerator.",
+        "width": 900,
+        "height": 1205,
+        "caption": "Kitchen"
+      },
+      {
+        "src": "assets/photo-bath.webp",
+        "alt": "Bathroom with a dark vanity, mirror, toilet and a tub with marble-look surround.",
+        "width": 900,
+        "height": 1205,
+        "caption": "Bath"
+      },
+      {
+        "src": "assets/photo-laundry.webp",
+        "alt": "On-site laundry room with a row of stacked washers and dryers.",
+        "width": 900,
+        "height": 1205,
+        "caption": "Laundry, on site"
+      },
+      {
+        "src": "assets/photo-house-northeast.webp",
+        "alt": "The 1889 Luttrell House from the northeast, with its turret and arched porch.",
+        "width": 900,
+        "height": 1205,
+        "caption": "The 1889 house"
+      }
     ]
   },
   "location": {
     "heading": "2328\nChanning Way",
     "lead": "Berkeley, CA 94704. On foot from the front gate:",
     "walks": [
-      { "place": "Telegraph Ave", "time": "5 min" },
-      { "place": "Sproul Plaza", "time": "8 min" },
-      { "place": "Downtown Berkeley BART", "time": "14 min" }
+      {
+        "place": "Telegraph Ave",
+        "time": "5 min"
+      },
+      {
+        "place": "Sproul Plaza",
+        "time": "8 min"
+      },
+      {
+        "place": "Downtown Berkeley BART",
+        "time": "14 min"
+      }
     ],
     "image": {
       "src": "assets/engraving-house.webp",
@@ -147,5 +244,6 @@
   "footer": {
     "address": "2328 Channing Way\nBerkeley, CA 94704",
     "email": "leasing@theluttrellberkeley.com"
-  }
+  },
+  "publishedAt": "2026-11-09T03:51:27.000Z"
 }
