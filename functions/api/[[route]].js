@@ -1,7 +1,7 @@
 // Website editor API (Cloudflare Pages Function). Every route except /api/login needs a session.
 //
 // Required secrets: ADMIN_PASSWORD, GITHUB_TOKEN (fine-grained, this repo, Contents: read & write),
-// ADMIN_KEY (shared with the inquiry Apps Script). Variables: GITHUB_REPO, SITE_URL, APPS_SCRIPT_URL.
+// ADMIN_KEY (shared with the Apps Script that sends the publish email). Variables: GITHUB_REPO, SITE_URL, APPS_SCRIPT_URL.
 // Optional: GITHUB_BRANCH, GITHUB_API, EDITORS, LIMITS (KV binding for sign-in limits).
 
 import { renderPage } from "../../render.mjs";
@@ -28,7 +28,7 @@ async function appsScript(env, params) {
     redirect: "follow",
   });
   const data = await res.json().catch(() => null);
-  if (!data || !data.ok) throw new Error((data && data.error) || `Inquiry service error (${res.status})`);
+  if (!data || !data.ok) throw new Error((data && data.error) || `Email service error (${res.status})`);
   return data;
 }
 
@@ -101,21 +101,6 @@ const routes = {
       context.waitUntil(note);
     }
     return json({ ok: true, commit: sha, version: blobs["content.json"], content, publishedAt: content.publishedAt });
-  },
-
-  "GET /inquiries": async ({ env }) => {
-    const data = await appsScript(env, { action: "admin-list" });
-    return json({ rows: data.rows });
-  },
-
-  "POST /inquiries/status": async ({ env, body }) => {
-    await appsScript(env, {
-      action: "admin-status",
-      row: String(body.row),
-      received: String(body.received || ""),
-      status: body.replied ? "Replied" : "",
-    });
-    return json({ ok: true });
   },
 };
 

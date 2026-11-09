@@ -300,19 +300,9 @@ await page.getByRole("button", { name: "Discard changes", exact: true }).last().
 await page.waitForTimeout(200);
 check((await page.textContent("#publish")).trim() === "Published", "Discard goes back to the live version");
 
-// --- inquiries ---
-await page.click('[data-tab="inquiries"]');
-await page.locator(".inquiry").first().waitFor();
-check((await page.locator(".inquiry").count()) === 1, "Waiting-for-reply shows only unanswered inquiries");
-await page.click('[data-filter="all"]');
-check((await page.locator(".inquiry").count()) === 2, "All shows every inquiry");
-check((await page.locator(".inq-name").allInnerTexts()).includes("<script>alert(1)</script>"), "inquiry text is shown as text, never run as code");
-await shot("09-inquiries");
-await page.locator('.inquiry:has-text("Jamie Park") input[type="checkbox"]').check();
-await page.waitForTimeout(300);
-s = await state();
-check(s.inquiries.find((r) => r.name === "Jamie Park").status === "Replied", "ticking Replied saves to the sheet");
-check(await page.isHidden("#inquiry-badge"), "badge clears when everything is replied");
+// --- no Inquiries tab ---
+check((await page.locator('[data-tab="inquiries"]').count()) === 0, "there is no Inquiries tab");
+check((await page.evaluate(() => fetch("/api/inquiries").then((r) => r.status))) === 404, "the inquiries API is switched off");
 
 // --- keyboard undo inside the page, editing at phone width, switching person ---
 await page.click('[data-tab="edit"]');

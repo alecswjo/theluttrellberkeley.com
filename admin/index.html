@@ -42,7 +42,6 @@
     </div>
     <nav class="tabs" aria-label="Sections">
       <button type="button" data-tab="edit" aria-selected="true">Edit website</button>
-      <button type="button" data-tab="inquiries">Inquiries <span id="inquiry-badge" class="badge" hidden></span></button>
       <button type="button" data-tab="history">History</button>
     </nav>
     <div class="bar-right">
@@ -81,21 +80,6 @@
       <div class="frame-wrap"><iframe id="preview" title="Website preview, editable"></iframe></div>
       <aside id="panel" class="panel" hidden></aside>
     </div>
-  </section>
-
-  <section id="tab-inquiries" class="tab page" hidden>
-    <div class="page-head">
-      <h1>Inquiries</h1>
-      <div class="tb-group">
-        <div class="seg" role="group" aria-label="Show">
-          <button type="button" data-filter="open" aria-pressed="true">Waiting for a reply</button>
-          <button type="button" data-filter="all" aria-pressed="false">All</button>
-        </div>
-        <button id="refresh-inquiries" type="button" class="btn">Refresh</button>
-      </div>
-    </div>
-    <p class="muted">Everyone who sent the form on the website. Click an email address to reply from your own email, then tick <b>Replied</b>.</p>
-    <div id="inquiry-list"></div>
   </section>
 
   <section id="tab-history" class="tab page" hidden>

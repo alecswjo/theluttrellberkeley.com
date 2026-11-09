@@ -9,7 +9,7 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const clone = (v) => structuredClone(v);
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
-// Small DOM builder. Text always goes in as text, never as HTML (inquiries are typed by strangers).
+// Small DOM builder. Text always goes in as text, never as HTML.
 function h(tag, attrs = {}, ...children) {
   const el = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs || {})) {
@@ -741,13 +741,12 @@ function notice(text) {
   n.hidden = false;
 }
 
-/* ---------- tabs: history and inquiries ---------- */
+/* ---------- tabs: history ---------- */
 
 function showTab(name) {
   document.querySelectorAll("[data-tab]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === name)));
   document.querySelectorAll(".tab").forEach((t) => (t.hidden = t.id !== `tab-${name}`));
   if (name === "history") loadHistory();
-  if (name === "inquiries") loadInquiries();
 }
 
 const when = (iso) => new Date(iso).toLocaleString(undefined, { month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" });
@@ -808,67 +807,6 @@ async function restoreVersion(v) {
   notice(`Loaded the version from ${when(v.date)}. Press Publish to put it back on the website.`);
 }
 
-let inquiryFilter = "open";
-let inquiryRows = [];
-
-async function loadInquiries() {
-  const box = $("#inquiry-list");
-  box.replaceChildren(h("p", { class: "hint" }, "Loading inquiries…"));
-  try {
-    const { rows } = await api("GET", "/inquiries");
-    inquiryRows = rows;
-    drawInquiries();
-  } catch (err) {
-    if (!err.quiet) box.replaceChildren(h("p", { class: "error" }, `Couldn't load inquiries: ${err.message}`));
-  }
-}
-
-function drawInquiries() {
-  const open = inquiryRows.filter((r) => r.status !== "Replied");
-  const badge = $("#inquiry-badge");
-  badge.textContent = open.length;
-  badge.hidden = open.length === 0;
-  document.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === inquiryFilter)));
-  const rows = inquiryFilter === "open" ? open : inquiryRows;
-  const box = $("#inquiry-list");
-  if (!rows.length) {
-    box.replaceChildren(h("p", { class: "empty" }, inquiryFilter === "open" ? "No inquiries waiting for a reply." : "No inquiries yet."));
-    return;
-  }
-  box.replaceChildren(
-    ...rows.map((r) =>
-      h(
-        "article",
-        { class: `inquiry${r.status === "Replied" ? " is-done" : ""}` },
-        h("div", { class: "inq-main" },
-          h("p", { class: "inq-name" }, r.name || "(no name)"),
-          h("p", { class: "inq-meta" }, [r.term, r.room && `${r.room} room`, when(r.received)].filter(Boolean).join(" · ")),
-          r.message ? h("p", { class: "inq-msg" }, r.message) : null,
-          h("p", { class: "inq-contact" },
-            h("a", { href: `mailto:${r.email}?subject=${encodeURIComponent("Re: The Luttrell")}` }, r.email),
-            r.phone ? ` · ${r.phone}` : "")),
-        h("label", { class: "replied" },
-          h("input", { type: "checkbox", checked: r.status === "Replied", onchange: (e) => markReplied(r, e.target.checked, e.target) }),
-          "Replied"),
-      ),
-    ),
-  );
-}
-
-async function markReplied(row, replied, box) {
-  box.disabled = true;
-  try {
-    await api("POST", "/inquiries/status", { row: row.row, received: row.received, replied });
-    row.status = replied ? "Replied" : "";
-    drawInquiries();
-  } catch (err) {
-    box.checked = !replied;
-    if (!err.quiet) toast(`Couldn't save that: ${err.message}`);
-  } finally {
-    box.disabled = false;
-  }
-}
-
 /* ---------- sign-in and start-up ---------- */
 
 function showScreen(id) {
@@ -911,7 +849,6 @@ async function start() {
     saveDraft();
     renderFrame();
     forgetUnusedUploads();
-    loadInquiries();
   }
   try {
     if (!localStorage.getItem("luttrell-editor-tip")) $("#tip").hidden = false;
@@ -967,8 +904,6 @@ document.querySelectorAll("[data-device]").forEach((b) =>
     $(".frame-wrap").classList.toggle("is-phone", state.device === "phone");
   }),
 );
-document.querySelectorAll("[data-filter]").forEach((b) => b.addEventListener("click", () => ((inquiryFilter = b.dataset.filter), drawInquiries())));
-$("#refresh-inquiries").addEventListener("click", loadInquiries);
 $("#tip button").addEventListener("click", () => {
   $("#tip").hidden = true;
   try {
