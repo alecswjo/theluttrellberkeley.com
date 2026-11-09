@@ -145,11 +145,12 @@ a { color: inherit; }
 .snap-tour { width: min(80%, 340px); }
 .tour video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; background: var(--sand); }
 .tour-play {
-  position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px;
-  border: 0; border-radius: 50%; background: rgba(247, 244, 236, .92); cursor: pointer;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, .25); transition: transform .15s, opacity .2s;
+  position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; padding: 0;
+  display: grid; place-items: center;
+  border: 0; border-radius: 50%; background: var(--paper); cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(29, 44, 74, .08), 0 6px 20px rgba(0, 0, 0, .28); transition: transform .15s, opacity .2s;
 }
-.tour-play span { display: block; width: 0; height: 0; margin-left: 30px; border-style: solid; border-width: 13px 0 13px 22px; border-color: transparent transparent transparent var(--ink); }
+.tour-play span { display: block; width: 0; height: 0; margin-left: 5px; border-style: solid; border-width: 13px 0 13px 22px; border-color: transparent transparent transparent var(--ink); }
 .tour:hover .tour-play { transform: scale(1.06); }
 .tour.is-playing .tour-play { opacity: 0; pointer-events: none; }
 .tour-play:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
