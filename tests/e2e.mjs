@@ -106,6 +106,8 @@ await page.click("#panel .icon-btn");
 
 // --- replace photos: JPEG, HEIC, a small one ---
 await frame().locator('[data-media="photos.items.2"]').click();
+await page.waitForFunction(() => document.querySelector("#panel .thumb img")?.complete);
+check((await page.locator("#panel .thumb img").evaluate((i) => i.naturalWidth)) > 0, "photo panel shows the current photo");
 await page.setInputFiles('#panel input[type="file"]', `${mediaDir}/large.jpg`);
 await page.waitForFunction(() => document.querySelector("#busy").hidden);
 await page.waitForTimeout(300);
@@ -140,6 +142,8 @@ await page.click("#panel .icon-btn");
 
 // --- video ---
 await frame().locator(".ed-media-btn", { hasText: "Change video" }).click();
+await page.waitForFunction(() => document.querySelector("#panel .thumb-video")?.readyState >= 1, null, { timeout: 15000 }).catch(() => {});
+check((await page.locator("#panel .thumb-video").evaluate((v) => v.videoWidth)) > 0, "video panel shows the current video");
 await page.setInputFiles('#panel input[type="file"]', `${mediaDir}/clip.mp4`);
 await page.locator('#panel input[type="range"]').waitFor();
 await page.locator('#panel input[type="range"]').fill("3");

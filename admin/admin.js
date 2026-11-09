@@ -100,6 +100,8 @@ async function forgetUnusedUploads() {
   }
 }
 const asset = (src) => uploads.get(src)?.url || src;
+// The editor page lives at /admin/, so site paths in its own panels need a leading slash.
+const panelAsset = (src) => uploads.get(src)?.url || `/${src}`;
 
 /* ---------- draft state ---------- */
 
@@ -384,7 +386,7 @@ function photoPanel(path) {
         change((d) => (get(d, path).focus = `${x}% ${y}%`), { key: `focus:${path}` });
       },
     },
-    h("img", { src: asset(img.src), alt: "" }),
+    h("img", { src: panelAsset(img.src), alt: "" }),
     FOCUSABLE(path) ? dot : null,
   );
   const drop = h(
@@ -443,7 +445,7 @@ function videoPanel() {
   const input = h("input", { type: "file", accept: "video/*,.mov,.mp4", hidden: true, onchange: (e) => chooseVideo(e.target.files[0]) });
   return panelShell(
     "Top video",
-    h("video", { class: "thumb-video", src: asset(hero.video), poster: asset(hero.poster), muted: true, autoplay: true, loop: true, playsInline: true }),
+    h("video", { class: "thumb-video", src: panelAsset(hero.video), poster: panelAsset(hero.poster), muted: true, autoplay: true, loop: true, playsInline: true }),
     videoSupported()
       ? h("div", { class: "stack" }, h("button", { class: "btn", type: "button", onclick: () => input.click() }, "Replace video…"), h("span", { class: "hint" }, "Any phone video works. You'll pick up to 15 seconds; sound is removed."), input)
       : h("p", { class: "hint warn" }, "To change the video, open this page in Chrome or Safari."),
