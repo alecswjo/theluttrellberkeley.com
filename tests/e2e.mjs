@@ -160,6 +160,8 @@ await page.click("#panel .icon-btn");
 // --- replace photos: JPEG, HEIC, a small one ---
 await frame().locator('[data-media="photos.items.2"]').click();
 await page.waitForFunction(() => document.querySelector("#panel .thumb img")?.complete);
+await page.waitForTimeout(700);
+check(await frame().locator('[data-media="photos.items.2"]').evaluate((el) => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; }), "the photo stays in view when its panel opens");
 check((await page.locator("#panel .thumb img").evaluate((i) => i.naturalWidth)) > 0, "photo panel shows the current photo");
 await page.setInputFiles('#panel input[type="file"]', `${mediaDir}/large.jpg`);
 await page.waitForFunction(() => document.querySelector("#busy").hidden);

@@ -308,6 +308,8 @@ function openPanel(kind, path) {
   state.panel = { kind, path };
   refreshPanel();
   frameCall("select", path);
+  // The panel narrows the preview and the page reflows, so bring the chosen item back into view.
+  if (kind !== "settings") setTimeout(() => frameCall("reveal", path), 80);
 }
 
 function closePanel() {
