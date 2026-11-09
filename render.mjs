@@ -88,6 +88,22 @@ export function renderPage(c, opts = {}) {
     )
     .join("\n");
 
+  // Optional tour clip in its own row above the photo grid; it plays on tap (site.js).
+  const tour = c.photos.tour;
+  const tourTile = tour
+    ? `    <div class="tour-feature">
+      <figure class="snap snap-tour reveal" style="--tilt:1.5deg"${m("photos.tour")}>
+        <div class="tour" data-tour>
+          <video muted loop playsinline preload="none" poster="${esc(asset(tour.poster))}" aria-label="${esc(tour.alt)}">
+            <source src="${esc(asset(tour.video))}" type="video/mp4">
+          </video>
+          <button type="button" class="tour-play" aria-label="Play the tour video"><span aria-hidden="true"></span></button>
+        </div>
+        <figcaption${t("photos.tour.caption")}>${esc(tour.caption)}</figcaption>
+      </figure>
+    </div>\n`
+    : "";
+
   const walks = c.location.walks
     .map(
       (w, i) =>
@@ -179,7 +195,7 @@ ${plans}
   <!-- PHOTOS -->
   <section class="photos wrap" aria-labelledby="photos-title">
     <h2 id="photos-title" class="display reveal"${t("photos.heading")}>${esc(c.photos.heading)}</h2>
-    <div class="snaps">
+${tourTile}    <div class="snaps">
 ${photos}
     </div>
     ${add("photos.items", "Add photo")}

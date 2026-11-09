@@ -18,7 +18,10 @@ const FIELD = {
   "rooms.disclaimer": "Floor plans disclaimer",
   "rooms.note": "Floor plans rates note",
   "rooms.link": "Floor plans link",
-  "photos.heading": "Photos heading",
+  "photos.heading": "Gallery heading",
+  "photos.tour": "Tour video",
+  "photos.tour.caption": "Tour video caption",
+  "photos.tour.alt": "Tour video description",
   "location.heading": "Address heading",
   "location.lead": "Address text",
   "location.image": "Address drawing",
@@ -128,7 +131,7 @@ export function describeChanges(before, after) {
       for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) {
         if (["src", "width", "height", "poster", "publishedAt"].includes(k)) continue;
         if (k === "video") {
-          if (a.video !== b.video) out.push("Top video: new video");
+          if (a.video !== b.video) out.push(`${path === "hero" ? "Top video" : "Tour video"}: new video`);
           continue;
         }
         walk(a[k], b[k], path ? `${path}.${k}` : k);

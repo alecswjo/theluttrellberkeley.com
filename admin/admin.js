@@ -220,7 +220,7 @@ window.luttrellEditor = {
         change((d) => set(d, msg.path, msg.value), { key: `text:${msg.path}`, rerender: false });
         break;
       case "media":
-        openPanel(msg.path === "hero" ? "video" : "photo", msg.path);
+        openPanel(VIDEO_SLOTS[msg.path] ? "video" : "photo", msg.path);
         break;
       case "status":
         openPanel("status", msg.path);
@@ -359,7 +359,7 @@ function refreshPanel() {
   if (panel.contains(active) && (active.tagName === "INPUT" || active.tagName === "TEXTAREA") && active.type !== "radio") return;
   let content;
   if (p.kind === "photo") content = photoPanel(p.path);
-  else if (p.kind === "video") content = videoPanel();
+  else if (p.kind === "video") content = videoPanel(p.path);
   else if (p.kind === "status") content = statusPanel(p.path);
   else if (p.kind === "settings") content = settingsPanel();
   if (!content) return closePanel();
@@ -367,6 +367,8 @@ function refreshPanel() {
   panel.hidden = false;
 }
 
+// Video slots and the longest clip each one takes.
+const VIDEO_SLOTS = { hero: { title: "Top video", seconds: 15 }, "photos.tour": { title: "Tour video", seconds: 30 } };
 const FOCUSABLE = (path) => path.startsWith("photos.items.") || path === "intro.image";
 const MAX_EDGE = (path) => (path.startsWith("rooms.plans") ? 2000 : path === "location.image" ? 1400 : 1800);
 
@@ -442,21 +444,23 @@ async function replacePhoto(path, file) {
   }
 }
 
-function videoPanel() {
-  const hero = state.draft.hero;
-  const input = h("input", { type: "file", accept: "video/*,.mov,.mp4", hidden: true, onchange: (e) => chooseVideo(e.target.files[0]) });
+function videoPanel(path) {
+  const slot = VIDEO_SLOTS[path];
+  const clip = get(state.draft, path);
+  if (!slot || !clip) return null;
+  const input = h("input", { type: "file", accept: "video/*,.mov,.mp4", hidden: true, onchange: (e) => chooseVideo(path, e.target.files[0]) });
   return panelShell(
-    "Top video",
-    h("video", { class: "thumb-video", src: panelAsset(hero.video), poster: panelAsset(hero.poster), muted: true, autoplay: true, loop: true, playsInline: true }),
+    slot.title,
+    h("video", { class: "thumb-video", src: panelAsset(clip.video), poster: panelAsset(clip.poster), muted: true, autoplay: true, loop: true, playsInline: true }),
     videoSupported()
-      ? h("div", { class: "stack" }, h("button", { class: "btn", type: "button", onclick: () => input.click() }, "Replace video…"), h("span", { class: "hint" }, "Any phone video works. You'll pick up to 15 seconds; sound is removed."), input)
+      ? h("div", { class: "stack" }, h("button", { class: "btn", type: "button", onclick: () => input.click() }, "Replace video…"), h("span", { class: "hint" }, `Any phone video works. You'll pick up to ${slot.seconds} seconds; sound is removed.`), input)
       : h("p", { class: "hint warn" }, "To change the video, open this page in Chrome or Safari."),
     h("div", { id: "video-trim" }),
-    field("Describe the video", textInput("hero.alt", { multiline: true }), "What the video shows, in one sentence."),
+    field("Describe the video", textInput(`${path}.alt`, { multiline: true }), "What the video shows, in one sentence."),
   );
 }
 
-async function chooseVideo(file) {
+async function chooseVideo(path, file) {
   if (!file) return;
   const box = $("#video-trim");
   let info;
@@ -465,7 +469,7 @@ async function chooseVideo(file) {
   } catch (err) {
     return toast(err.message);
   }
-  const maxLen = Math.min(15, info.duration);
+  const maxLen = Math.min(VIDEO_SLOTS[path].seconds, info.duration);
   const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
   const preview = h("video", { class: "thumb-video", src: info.url, muted: true, playsInline: true, autoplay: true });
   const range = h("input", { type: "range", min: 0, max: Math.max(0, info.duration - maxLen), step: 0.1, value: 0 });
@@ -491,7 +495,7 @@ async function chooseVideo(file) {
       await keepUpload(out.path, out.blob);
       await keepUpload(out.poster.path, out.poster.blob);
       URL.revokeObjectURL(info.url);
-      change((d) => Object.assign(d.hero, { video: out.path, poster: out.poster.path }));
+      change((d) => Object.assign(get(d, path), { video: out.path, poster: out.poster.path }));
       box.replaceChildren();
       toast("Video replaced. It goes live when you publish.");
     } catch (err) {

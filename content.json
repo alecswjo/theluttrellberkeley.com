@@ -213,7 +213,13 @@
         "height": 1205,
         "caption": "The Luttrell House"
       }
-    ]
+    ],
+    "tour": {
+      "video": "assets/tour.mp4",
+      "poster": "assets/tour-poster.webp",
+      "caption": "Take the tour",
+      "alt": "Short walk-through of an apartment: the keypad front door, the kitchen, sunny bedroom windows and the bathroom."
+    }
   },
   "location": {
     "heading": "2328\nChanning Way",

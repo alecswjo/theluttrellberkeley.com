@@ -140,6 +140,19 @@ a { color: inherit; }
   transition: transform .5s cubic-bezier(.2,.7,.2,1);
 }
 .snap img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.tour { position: relative; cursor: pointer; }
+.tour-feature { display: grid; justify-items: center; margin: 8px 0 clamp(48px, 7vw, 88px); }
+.snap-tour { width: min(100%, 340px); }
+.tour video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; background: var(--sand); }
+.tour-play {
+  position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px;
+  border: 0; border-radius: 50%; background: rgba(247, 244, 236, .92); cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .25); transition: transform .15s, opacity .2s;
+}
+.tour-play span { display: block; width: 0; height: 0; margin-left: 30px; border-style: solid; border-width: 13px 0 13px 22px; border-color: transparent transparent transparent var(--ink); }
+.tour:hover .tour-play { transform: scale(1.06); }
+.tour.is-playing .tour-play { opacity: 0; pointer-events: none; }
+.tour-play:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .snap figcaption { font: 600 13px/1.2 var(--head); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); padding: 12px 2px 0; }
 .snap figcaption.script { font: 400 30px/1 var(--script); letter-spacing: 0; text-transform: none; padding: 14px 4px 2px; }
 .snap:hover { transform: rotate(0deg) scale(1.015); }

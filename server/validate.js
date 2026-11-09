@@ -25,7 +25,7 @@ const SHAPE = {
     note: "str",
     link: "str",
   },
-  photos: { heading: "str", items: [{ ...IMAGE, caption: "str" }] },
+  photos: { heading: "str", items: [{ ...IMAGE, caption: "str" }], "tour?": { video: "src", poster: "src", caption: "str", alt: "str" } },
   location: { heading: "str", lead: "str", walks: [{ place: "str", time: "str" }], image: IMAGE },
   inquire: { heading: "str", body: "str" },
   footer: { address: "str", phone: "str?", email: "email" },

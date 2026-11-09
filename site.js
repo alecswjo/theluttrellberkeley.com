@@ -10,6 +10,15 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  // Tour tile: tap to play (muted, looping), tap again to pause.
+  document.querySelectorAll("[data-tour]").forEach(function (box) {
+    var v = box.querySelector("video");
+    box.addEventListener("click", function () {
+      if (v.paused) { v.play(); box.classList.add("is-playing"); }
+      else { v.pause(); box.classList.remove("is-playing"); }
+    });
+  });
+
   var items = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {
     items.forEach(function (el) { el.classList.add("is-in"); });

@@ -207,6 +207,17 @@ await page.waitForFunction(() => document.querySelector("#toast")?.textContent.i
 check((await page.textContent("#toast")).includes("Video replaced"), "video is trimmed and converted in the browser");
 await page.click("#panel .icon-btn");
 
+// --- tour video tile ---
+await frame().locator('[data-media="photos.tour"]').evaluate((e) => e.scrollIntoView({ block: "center" }));
+await frame().locator('[data-media="photos.tour"] .ed-media-btn').click();
+await page.waitForTimeout(500);
+check((await page.textContent("#panel h2")) === "Tour video", "the tour tile opens its own video panel");
+check((await page.textContent("#panel")).includes("up to 30 seconds"), "the tour takes clips up to 30 seconds");
+await page.setInputFiles('#panel input[type="file"]', `${mediaDir}/clip.mp4`);
+await page.locator("#panel .trim").waitFor();
+check((await page.textContent("#panel .trim")).includes("0:00 to 0:20"), "a 20-second video is used whole for the tour");
+await page.click("#panel .icon-btn");
+
 // --- Google settings ---
 await page.click("#settings-btn");
 await page.fill("#panel input", "The Luttrell · Student rooms in Berkeley");
@@ -238,6 +249,7 @@ check(s.commits[0].author === "Mom" && s.commits[0].message.startsWith("Website 
 check(c.intro.headline === "Furnished rooms, a short walk from campus." && c.rooms.plans[1].prices[0].price === "$1,450", "content.json has the new text");
 check(c.photos.items[2].src.startsWith("assets/uploads/") && s.commits[0].files.includes(c.photos.items[2].src), "uploaded photo is in the commit");
 check(c.hero.video.startsWith("assets/uploads/") && c.hero.poster.startsWith("assets/uploads/"), "new video and poster are in the commit");
+check(c.photos.tour && c.photos.tour.video === "assets/tour.mp4", "the tour tile survives publishing unchanged");
 check(s.indexHtml.includes("a short walk from campus") && !s.indexHtml.includes("data-edit"), "index.html is rendered without editor markup");
 check(c.footer.phone === "(510) 555-0199" && s.indexHtml.includes('href="tel:+15105550199"'), "phone is published with a working call link");
 check(c.history.body === "Built in 1889.\n\nRestored in 2025.", "two-paragraph text keeps its blank line");

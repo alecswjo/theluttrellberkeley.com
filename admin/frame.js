@@ -65,8 +65,9 @@
     });
 
     document.querySelectorAll("[data-media]").forEach((el) => {
-      const isVideo = el.dataset.media === "hero";
-      const b = button(isVideo ? "Change video" : "Change photo", isVideo ? "Change the video" : "Change this photo", () =>
+      const isVideo = el.dataset.media === "hero" || el.dataset.media === "photos.tour";
+      const isTour = el.dataset.media === "photos.tour";
+      const b = button(isTour ? "Change tour video" : isVideo ? "Change video" : "Change photo", isTour ? "Change the tour video" : isVideo ? "Change the video" : "Change this photo", () =>
         post({ type: "media", path: el.dataset.media }),
       "ed-media-btn");
       el.append(b);
