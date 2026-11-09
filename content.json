@@ -13,6 +13,7 @@
   "intro": {
     "kicker": "The Luttrell · Berkeley",
     "headline": "Modern Living. Historic Charm.",
+    "subhead": "A New Standard in Berkeley Student Living.",
     "body": "Brand-new apartments paired with the timeless character of a historic Victorian home. A distinctive off-campus living experience designed for UC Berkeley students.",
     "image": {
       "src": "assets/postcard-house.webp",
@@ -20,15 +21,14 @@
       "width": 1100,
       "height": 1473
     },
-    "caption": "Channing Way, 1889 & now",
-    "subhead": "A New Standard in Berkeley Student Living."
+    "caption": "Channing Way, 1889 & now"
   },
   "rooms": {
     "heading": "Floor plans",
-    "body": "Every room comes furnished. A private room has a full bed, desk, chair, two 2-drawer chests and a wardrobe. A shared room has two Twin XL beds, two desks and chairs, and two wardrobes.",
+    "body": "Fully Furnished Rooms\n\nEvery room comes fully furnished for your convenience.\n\nPrivate Room: Includes one full-size or Twin XL bed, a desk, an office chair, two 2-drawer chests, and a wardrobe.\n\nShared Room: Each resident is provided with one Twin XL bed, a desk, an office chair, two 2-drawer chests, and a wardrobe.",
     "plans": [
       {
-        "num": "No. 1",
+        "num": "",
         "name": "Type 1",
         "spec": "2 bedrooms · 1 bath · 3 residents · 471–478 sq ft",
         "status": "",
@@ -57,7 +57,7 @@
         }
       },
       {
-        "num": "No. 2",
+        "num": "",
         "name": "Type 2 – Shared",
         "spec": "2 bedrooms · 1 bath · 3 residents · 520 sq ft",
         "status": "",
@@ -86,7 +86,7 @@
         }
       },
       {
-        "num": "No. 3",
+        "num": "",
         "name": "Type 2 – Private",
         "spec": "3 bedrooms · 1 bath · 3 residents · 581 sq ft",
         "status": "",
@@ -110,7 +110,7 @@
         }
       },
       {
-        "num": "No. 4",
+        "num": "",
         "name": "Type 3",
         "spec": "4 bedrooms · 2 baths · 4 residents · 893 sq ft",
         "status": "",
@@ -164,54 +164,33 @@
         }
       }
     ],
-    "note": "Fall 2027 monthly rates. Shared-bedroom pricing is per person in a two-person bedroom. Spring specials available.",
-    "link": "Ask about Spring 2027",
-    "disclaimer": "Floor plans are artist's renderings and all dimensions are approximate. Actual products, features, and specifications may vary in size or detail. Not all features are available in every rental home. Prices and availability are subject to change without notice."
+    "disclaimer": "Floor plans are artist's renderings and all dimensions are approximate. Actual products, features, and specifications may vary in size or detail. Not all features are available in every rental home. Prices and availability are subject to change without notice.",
+    "note": "2027 Fall Monthly Rates\n\nShared-bedroom rates are listed per person in a two-person room. All rates are based on a 12-month lease. Spring specials are also available.",
+    "link": "Ask about Spring 2027"
   },
   "photos": {
     "heading": "Gallery",
     "items": [
-      {
-        "src": "assets/photo-bedroom-window.webp",
-        "alt": "Private bedroom: full bed frame with storage drawers, desk and chair, and a large south-facing window.",
-        "width": 900,
-        "height": 1612,
-        "caption": "Private bedroom"
-      },
-      {
-        "src": "assets/photo-bedroom-corner.webp",
-        "alt": "Private bedroom with windows on two walls, a desk and chair, and a bed frame.",
-        "width": 900,
-        "height": 1612,
-        "caption": "Corner bedroom"
-      },
-      {
-        "src": "assets/photo-kitchen.webp",
-        "alt": "Apartment kitchen with white cabinets, stone counters, stainless range, dishwasher and refrigerator.",
-        "width": 900,
-        "height": 1205,
-        "caption": "Kitchen"
-      },
-      {
-        "src": "assets/photo-bath.webp",
-        "alt": "Bathroom with a dark vanity, mirror, toilet and a tub with marble-look surround.",
-        "width": 900,
-        "height": 1205,
-        "caption": "Bath"
-      },
-      {
-        "src": "assets/photo-laundry.webp",
-        "alt": "On-site laundry room with a row of stacked washers and dryers.",
-        "width": 900,
-        "height": 1205,
-        "caption": "Laundry, on site"
-      },
       {
         "src": "assets/photo-house-northeast.webp",
         "alt": "The 1889 Luttrell House from the northeast, with its turret and arched porch.",
         "width": 900,
         "height": 1205,
         "caption": "The Luttrell House"
+      },
+      {
+        "src": "assets/uploads/9bc085f81aaa34e1.jpg",
+        "alt": "",
+        "width": 1536,
+        "height": 1024,
+        "caption": "Bedroom"
+      },
+      {
+        "src": "assets/uploads/6aeac5916084671d.jpg",
+        "alt": "",
+        "width": 1536,
+        "height": 1024,
+        "caption": "New photo"
       }
     ],
     "tour": {
@@ -251,12 +230,12 @@
   },
   "footer": {
     "address": "2328 Channing Way\nBerkeley, CA 94704",
-    "email": "leasing@theluttrellberkeley.com",
-    "phone": "(510) 717-0047"
+    "phone": "(510) 717-0047",
+    "email": "leasing@theluttrellberkeley.com"
   },
-  "publishedAt": "2026-11-09T03:52:12.182Z",
   "history": {
     "heading": "The Luttrell House",
     "body": "The front house was built in 1889 for Captain James F. and Cecilia M. Luttrell. It is a City of Berkeley historic resource, restored and now paired with the new building behind it."
-  }
+  },
+  "publishedAt": "2026-11-09T09:01:54.619Z"
 }
