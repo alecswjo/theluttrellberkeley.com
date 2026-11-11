@@ -4,7 +4,7 @@
     "description": "Furnished private and shared rooms at 2328 Channing Way, Berkeley. About five minutes on foot to campus. Now leasing Spring and Fall 2027."
   },
   "hero": {
-    "script": "Now leasing",
+    "script": "Now Leasing",
     "caps": "Spring & Fall 2027",
     "video": "assets/hero-loop.mp4",
     "poster": "assets/hero-poster.webp",
@@ -14,12 +14,12 @@
     "kicker": "The Luttrell · Berkeley",
     "headline": "Modern Living. Historic Charm.",
     "subhead": "A New Standard in Berkeley Student Living.",
-    "body": "Brand-new apartments paired with the timeless character of a historic Victorian home. A distinctive off-campus living experience designed for UC Berkeley students.",
+    "body": "Brand-new Furnished apartments in Southside Berkeley paired with the timeless character of a historic Victorian home. A distinctive off-campus living experience designed for UC Berkeley students.",
     "image": {
-      "src": "assets/postcard-house.webp",
+      "src": "assets/uploads/5e9f598342902172.webp",
       "alt": "Illustration of the Luttrell House and the new building behind it, drawn from a photo of the real building.",
-      "width": 1100,
-      "height": 1473
+      "width": 1086,
+      "height": 1448
     },
     "caption": "Channing Way, 1889 & now"
   },
@@ -176,14 +176,14 @@
         "alt": "The 1889 Luttrell House from the northeast, with its turret and arched porch.",
         "width": 900,
         "height": 1205,
-        "caption": "The Luttrell House"
+        "caption": "The Luttrell House front"
       },
       {
         "src": "assets/uploads/23492448e623833f.jpg",
         "alt": "",
         "width": 1536,
         "height": 1024,
-        "caption": "Bedroom"
+        "caption": "furnished Bedroom"
       },
       {
         "src": "assets/uploads/6aeac5916084671d.jpg",
@@ -198,6 +198,13 @@
         "width": 1086,
         "height": 1448,
         "caption": "Kitchen"
+      },
+      {
+        "src": "assets/uploads/22e3e25a11f4a114.webp",
+        "alt": "",
+        "width": 936,
+        "height": 892,
+        "caption": "Luttrell house living"
       },
       {
         "src": "assets/uploads/0b49c8d3507e18dd.jpg",
@@ -234,15 +241,15 @@
     "walks": [
       {
         "place": "Telegraph Ave",
-        "time": "5 min"
+        "time": "4 min"
       },
       {
         "place": "Sproul Plaza",
-        "time": "8 min"
+        "time": "7 min"
       },
       {
         "place": "Downtown Berkeley BART",
-        "time": "14 min"
+        "time": "12 min"
       }
     ],
     "image": {
@@ -265,5 +272,5 @@
     "heading": "The Luttrell House",
     "body": "The front house was built in 1889 for Captain James F. and Cecilia M. Luttrell. It is a City of Berkeley historic resource, restored and now paired with the new building behind it."
   },
-  "publishedAt": "2026-11-10T03:28:55.911Z"
+  "publishedAt": "2026-11-11T03:59:49.937Z"
 }
