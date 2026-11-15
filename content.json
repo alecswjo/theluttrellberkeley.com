@@ -16,10 +16,10 @@
     "subhead": "A New Standard in Berkeley Student Living.",
     "body": "Brand-new Furnished apartments in Southside Berkeley paired with the timeless character of a historic Victorian home. A distinctive off-campus living experience designed for UC Berkeley students.",
     "image": {
-      "src": "assets/uploads/5e9f598342902172.webp",
+      "src": "assets/uploads/6ebd17466c2d823a.webp",
       "alt": "Illustration of the Luttrell House and the new building behind it, drawn from a photo of the real building.",
-      "width": 1086,
-      "height": 1448
+      "width": 1087,
+      "height": 1447
     },
     "caption": "Channing Way, 1889 & now"
   },
@@ -226,6 +226,13 @@
         "width": 1038,
         "height": 1515,
         "caption": "ELEVATOR"
+      },
+      {
+        "src": "assets/uploads/811b40eca620a63f.webp",
+        "alt": "",
+        "width": 1086,
+        "height": 1448,
+        "caption": "Secured FRONT GATE"
       }
     ],
     "tour": {
@@ -272,5 +279,5 @@
     "heading": "The Luttrell House",
     "body": "The front house was built in 1889 for Captain James F. and Cecilia M. Luttrell. It is a City of Berkeley historic resource, restored and now paired with the new building behind it."
   },
-  "publishedAt": "2026-11-11T03:59:49.937Z"
+  "publishedAt": "2026-11-15T20:38:25.632Z"
 }
