@@ -243,8 +243,8 @@
           <input id="f-email" name="email" type="email" autocomplete="email" required>
         </div>
         <div class="field">
-          <label for="f-phone">Phone <em>optional</em></label>
-          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          <label for="f-phone">Phone <span aria-hidden="true">*</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required pattern="\D*(\d\D*){7,}" title="Please enter a phone number we can reach you at.">
         </div>
         <fieldset class="field choice full">
           <legend>Term <span aria-hidden="true">*</span></legend>
